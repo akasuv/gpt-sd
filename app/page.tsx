@@ -79,7 +79,7 @@ export default function Home() {
         </button>
       </div>
       <div className="w-[500px]">
-        {isWriting && <p>Writing...</p>}
+        {isWriting && <p className="text-center w-full">Writing...</p>}
         {/* {result && JSON.stringify(result)} */}
         {result && (
           <div>
