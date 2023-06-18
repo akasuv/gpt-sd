@@ -86,7 +86,7 @@ export default function Home() {
             <p className="font-black text-lg">{result.title}</p>
             <ul className="flex flex-col gap-y-2 mt-4">
               {result.content.map((item, idx) => (
-                <li className="flex flex-col">
+                <li className="flex flex-col" key={idx}>
                   <div className="flex">
                     <p className="w-[24px]">{idx + 1}.</p>
                     <p>{item.sentence}</p>
