@@ -22,9 +22,7 @@ export default function Home() {
     setIsWriting(true);
     await fetch(`${ENDPOINT}/gpt?name=${name}`)
       .then((res) => res.json())
-      .then((data) =>
-        setResult(JSON.parse(data.choices?.[0]?.message.content).result)
-      );
+      .then((data) => setResult(data.choices?.[0]?.message.content));
     setIsWriting(false);
   };
 
@@ -65,15 +63,15 @@ export default function Home() {
       <div className="flex flex-col gap-y-4 w-[500px] items-center">
         <input
           type="text"
-          placeholder="Please input a name"
+          placeholder="Prompt"
           className="input w-full  input-bordered"
           onChange={(e) => setName(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Some descriptions (Optional)"
-          className="input w-full  input-bordered"
-        />
+        {/* <input */}
+        {/*   type="text" */}
+        {/*   placeholder="Some descriptions (Optional)" */}
+        {/*   className="input w-full  input-bordered" */}
+        {/* /> */}
         <button className="btn w-[300px] mt-8" onClick={writeStory}>
           Write a story
         </button>
@@ -83,17 +81,18 @@ export default function Home() {
         {/* {result && JSON.stringify(result)} */}
         {result && (
           <div>
-            <p className="font-black text-lg">{result.title}</p>
-            <ul className="flex flex-col gap-y-2 mt-4">
-              {result.content.map((item, idx) => (
-                <li className="flex flex-col" key={idx}>
-                  <div className="flex">
-                    <p className="w-[24px]">{idx + 1}.</p>
-                    <p>{item.sentence}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            {result}
+            {/* <p className="font-black text-lg">{result.title}</p> */}
+            {/* <ul className="flex flex-col gap-y-2 mt-4"> */}
+            {/*   {result.content.map((item, idx) => ( */}
+            {/*     <li className="flex flex-col" key={idx}> */}
+            {/*       <div className="flex"> */}
+            {/*         <p className="w-[24px]">{idx + 1}.</p> */}
+            {/*         <p>{item.sentence}</p> */}
+            {/*       </div> */}
+            {/*     </li> */}
+            {/*   ))} */}
+            {/* </ul> */}
           </div>
         )}
       </div>
